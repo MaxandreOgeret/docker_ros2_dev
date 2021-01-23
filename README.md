@@ -22,11 +22,6 @@
   ```
   docker exec -it foxy bash
   ```
-  - Navigate to the ws and build it.
-  ```
-  cd colcon_ws
-  colcon build
-  ```
   - To build form the host
   ```
   docker exec -it foxy /bin/bash -i -c 'colcon build'
