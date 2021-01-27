@@ -11,15 +11,11 @@ RUN service ssh restart
 
 # Cloning packages
 RUN mkdir src
-RUN git clone https://github.com/ros-drivers/ros2_ouster_drivers.git src/ros2_ouster_drivers
-RUN git clone https://github.com/ouster-lidar/ouster_example.git src/.ouster_example
+#RUN git clone https://github.com/MaxandreOgeret/ros2_simple_ouster_driver.git && cd ros2_simple_ouster_driver && git checkout foxy_devel
 
 # Install deps
 RUN . /opt/ros/$ROS_DISTRO/setup.sh && \
-    export DEBIAN_FRONTEND=noninteractive && \
-    rosdep install -y -qq \
-      --from-paths src \
-      --ignore-src
+  rosdep install --from-paths src --ignore-src -r -y
 
 # Building packages
 RUN . /opt/ros/$ROS_DISTRO/setup.sh && colcon build --symlink-install && . install/setup.sh 
