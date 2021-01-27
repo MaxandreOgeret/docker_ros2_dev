@@ -11,7 +11,7 @@ RUN service ssh restart
 
 # Cloning packages
 RUN mkdir src
-RUN git clone https://github.com/MaxandreOgeret/ros2_simple_ouster_driver.git src/ros2_simple_ouster_driver && cd src/ros2_simple_ouster_driver && git checkout foxy_devel
+RUN git clone https://github.com/MaxandreOgeret/ros2_simple_ouster_driver.git src/ && cd src && git checkout foxy_devel
 
 # Install deps
 RUN . /opt/ros/$ROS_DISTRO/setup.sh && \
