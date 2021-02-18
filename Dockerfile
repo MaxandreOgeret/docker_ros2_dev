@@ -16,6 +16,7 @@ RUN git clone https://github.com/MaxandreOgeret/ros2_ouster_drivers.git src/ && 
 
 # Install deps
 RUN . /opt/ros/$ROS_DISTRO/setup.sh && \
+  apt update && \
   rosdep update && \
   DEBIAN_FRONTEND=noninteractive rosdep install --from-paths src --ignore-src -r -y
 
