@@ -1,4 +1,4 @@
-FROM ros:foxy
+FROM ros:galactic
 
 WORKDIR colcon_ws
 
@@ -12,7 +12,7 @@ RUN service ssh restart
 
 # Cloning packages
 RUN mkdir src
-RUN git clone https://github.com/MaxandreOgeret/ros2_ouster_drivers.git src/ && cd src && git checkout foxy_devel_f2.0
+RUN git clone https://github.com/MaxandreOgeret/ros2_ouster_drivers.git src/
 
 # Install deps
 RUN . /opt/ros/$ROS_DISTRO/setup.sh && \

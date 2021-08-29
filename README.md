@@ -7,22 +7,32 @@
   docker build -t my/ros:app .
   ```
 - Run the container (Find a fancy name)
-  ```
+  ```bash
   docker run \
-  --name foxy -t -d \
+  --name ros-dev -t -d \
   --net=host --privileged \
   my/ros:app
   ```
 - You can use sshfs to mount the workspace :
-  ```
+
+  ```bash
   sshfs -o password_stdin -p 2222 root@localhost:/colcon_ws ./ws <<< 'root'
   ```
 - To build the workspace
-  - Run bash in the conmtainer
+  - Run bash in the container and build with colcon.
+
+  ```bash
+  # From the host
+  docker exec -it ros-dev bash
   ```
-  docker exec -it foxy bash
+
+  ```bash
+  # In the container
+  colcon build
   ```
-  - To build form the host
-  ```
-  docker exec -it foxy /bin/bash -i -c 'colcon build'
+
+  - To build directly from the host
+
+  ```bash
+  docker exec -it ros-dev /bin/bash -i -c 'colcon build'
   ```
